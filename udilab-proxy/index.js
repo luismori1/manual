@@ -4,7 +4,12 @@ import fetch from 'node-fetch';
 const app = express();
 app.use(express.json());
 
-const SHEET_URL = 'https://sheets.googleapis.com/v4/spreadsheets/1-c0extZRAaB-JkxbemIvYJuOpg0YMk8SbyGUkP0Pghk/values/estado_bot!A:B?key=AIzaSyBux9xap8a3tEBlLalO9xJLTe2_F-8IKr4';
+// ✅ ESTA ES LA LÍNEA CLAVE PARA QUE RAILWAY DETECTE EL SERVICIO
+app.get('/', (req, res) => {
+  res.send('OK');
+});
+
+const SHEET_URL = 'https://sheets.googleapis.com/v4/spreadsheets/...'; // tu URL completa
 const ASSISTANT_URL = 'https://builderbot-openai-assistants-production-3a78.up.railway.app/v1/messages';
 
 app.post('/udilab-filter', async (req, res) => {
